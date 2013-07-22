@@ -12,7 +12,9 @@
     <modules>
         <module>services</module>
         <module>social</module>
-        <module>android</module>		
+<!--
+        <module>android</module>
+-->
         <module>rest</module>
         <module>hateoas</module>
         <module>hateoas-data</module>
@@ -195,7 +197,7 @@
             </dependency>
             <dependency>
                 <groupId>org.springframework.hateoas</groupId>
-                <version>0.6.0.RELEASE</version>
+                <version>0.7.0.RELEASE</version>
                 <artifactId>spring-hateoas</artifactId>
             </dependency>
             <dependency>

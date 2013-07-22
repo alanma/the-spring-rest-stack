@@ -35,7 +35,7 @@ public class CrmTemplate extends AbstractOAuth2ApiBinding implements CrmOperatio
 			setRequestFactory(ClientHttpRequestFactorySelector.bufferRequests(getRestTemplate().getRequestFactory()));
 		}
 		catch (Exception e) {
-			throw new RuntimeException("could not initialize the " + getClass().getName(), e);
+			throw new RuntimeException("could not initialize the " + this.getClass().getName(), e);
 		}
 	}
 
@@ -202,8 +202,14 @@ public class CrmTemplate extends AbstractOAuth2ApiBinding implements CrmOperatio
 	}
 
 	static class UserResource extends Resource<User> {
+		public UserResource(User content, Link... links) {
+			super(content, links);
+		}
 	}
 
 	static class CustomerResource extends Resource<Customer> {
+		public CustomerResource(Customer content, Link... links) {
+			super(content, links);
+		}
 	}
 }
