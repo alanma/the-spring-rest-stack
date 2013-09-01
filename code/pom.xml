@@ -12,7 +12,7 @@
     <modules>
         <module>services</module>
         <module>social</module>
-        <module>android</module>		
+        <!--<module>android</module>		-->
         <module>rest</module>
         <module>hateoas</module>
         <module>hateoas-data</module>

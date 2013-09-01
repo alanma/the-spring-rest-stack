@@ -1,16 +1,28 @@
 package com.jl.crm.web;
 
-import com.jl.crm.services.*;
-import org.springframework.http.*;
+import java.net.URI;
+import java.util.Collections;
+
+import javax.inject.Inject;
+
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.FileCopyUtils;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import javax.inject.Inject;
-import java.net.URI;
-import java.util.Collections;
+import com.jl.crm.services.CrmService;
+import com.jl.crm.services.User;
+import com.jl.crm.services.UserProfilePhotoReadException;
+import com.mangofactory.swagger.annotations.ApiIgnore;
 
 @Controller
 @RequestMapping (value = ApiUrls.ROOT_URL_USERS_USER_PHOTO)
@@ -23,6 +35,7 @@ class UserProfilePhotoController {
 		this.crmService = crmService;
 	}
 
+	@ApiIgnore
 	@RequestMapping (method = RequestMethod.POST)
 	HttpEntity<Void> writeUserProfilePhoto(@PathVariable Long user,  
 			            @RequestParam MultipartFile file) throws Throwable {
@@ -38,6 +51,7 @@ class UserProfilePhotoController {
 		return new ResponseEntity<Void>(httpHeaders, HttpStatus.CREATED);
 	}
 
+	@ApiIgnore
 	@RequestMapping (method = RequestMethod.GET)
 	HttpEntity<byte[]> loadUserProfilePhoto(@PathVariable Long user) throws Throwable {
 		CrmService.ProfilePhoto profilePhoto = this.crmService.readUserProfilePhoto(user);

@@ -130,7 +130,7 @@ class EmbeddedDataSourceConfiguration {
 	}
 
 	/**
-	 * You can access this H2 database at <a href = "http://localhost:8080/admin/console">the H2 administration
+	 * You can access this H2 database at <a href = "http://localhost:8080/h2/">the H2 administration
 	 * console</a>.
 	 */
 	@Bean

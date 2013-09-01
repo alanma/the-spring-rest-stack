@@ -18,11 +18,10 @@ public class H2EmbeddedDatbaseConsoleInitializer implements WebApplicationInitia
 	public void onStartup(ServletContext servletContext) throws ServletException {
 		WebServlet webServlet = new WebServlet();
 
-		ServletRegistration.Dynamic dynamic = servletContext.addServlet("h2", webServlet);
-		dynamic.setInitParameter("trace", "true");
-		dynamic.setAsyncSupported(true);
-		dynamic.addMapping("/h2/*");
-		dynamic.setLoadOnStartup(1);
+		ServletRegistration.Dynamic h2Servlet = servletContext.addServlet("H2Console", webServlet);
+		h2Servlet.setInitParameter("trace", "true");
+		h2Servlet.setAsyncSupported(true);
+		h2Servlet.addMapping("/h2/*");
 	}
 
 }
